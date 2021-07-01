@@ -53,8 +53,7 @@ namespace BalancedBracketsNS
                         if (i == fullbrackets[brackets.First()])
                         {
                             brackets.Pop();
-                        }
-                        
+                        }       
                     }
                 }
             }
@@ -65,8 +64,7 @@ namespace BalancedBracketsNS
             }
 
             return brackets.Count() == 0;
-            
-                
+ 
             
             //int brackets = 0;
             //foreach (char ch in str.ToCharArray())
