@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BalancedBracketsNS
 {
@@ -23,21 +25,64 @@ namespace BalancedBracketsNS
          * parameter str - to be validated
          * returns true if balanced, false otherwise
         */
+        //private static bool isMatchingPair(char v1, char v2)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
         public static bool HasBalancedBrackets(String str)
         {
-            int brackets = 0;
-            foreach (char ch in str.ToCharArray())
+            Dictionary<char, char> fullbrackets = new Dictionary<char, char>()
             {
-                if (ch == '[')
+                { '[', ']' }
+            };
+
+            Stack<char> brackets = new Stack<char>();
+
+            try
+            {
+                foreach (char i in str)
                 {
-                    brackets++;
-                }
-                else if (ch == ']')
-                {
-                    brackets--;
+                    if (fullbrackets.Keys.Contains(i))
+                    {
+                        brackets.Push(i);
+                    }
+                    else
+                        if (fullbrackets.Values.Contains(i))
+                    {
+                        if (i == fullbrackets[brackets.First()])
+                        {
+                            brackets.Pop();
+                        }
+                        
+                    }
                 }
             }
-            return brackets == 0;
+            
+            catch
+            {
+                return false;
+            }
+
+            return brackets.Count() == 0;
+            
+                
+            
+            //int brackets = 0;
+            //foreach (char ch in str.ToCharArray())
+            //{
+            //    if (ch == '[')
+            //    {
+            //        brackets++;
+            //    }
+            //    else if (ch == ']')
+            //    {
+            //        brackets--;
+            //    }
+            //}
+            //return brackets == 0;
         }
+
+        
     }
 }
